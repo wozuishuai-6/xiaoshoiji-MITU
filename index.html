@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+<title>純白 · Retro Phone</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="viewport" id="vp">
+
+  <!-- 状态栏 -->
+  <div class="status" id="statusBar">
+    <span id="sbLeft">--:--</span>
+    <div class="sb-r">
+      <svg viewBox="0 0 24 24"><path d="M2 8.5a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16.5a5 5 0 0 1 6 0"/><circle cx="12" cy="20" r=".9" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" class="fill"><rect x="2" y="15" width="3" height="5" rx=".7"/><rect x="7" y="12" width="3" height="8" rx=".7"/><rect x="12" y="8" width="3" height="12" rx=".7"/><rect x="17" y="4" width="3" height="16" rx=".7"/></svg>
+      <span class="bat"><i id="sbBat"></i></span>
+    </div>
+  </div>
+
+  <!-- 桌面 -->
+  <div id="home">
+    <div class="wall empty" id="homeWall"></div>
+    <div class="pager" id="pager">
+      <div class="pages" id="pages">
+        <div class="page-col">
+          <div class="card w-prof">
+            <div class="w-av" id="wAv">(・ω・)</div>
+            <div class="pi">
+              <div class="w-nick" id="wNick"></div>
+              <div class="w-sign" id="wSign"></div>
+              <div class="w-meta">
+                <div class="ln"><i class="dm"></i><span id="wDate"></span></div>
+                <div class="ln"><i class="dm"></i><span>剩余天使能量</span><b id="wEn"></b></div>
+              </div>
+              <div class="ebar"><i id="wEnBar"></i></div>
+            </div>
+          </div>
+
+          <div class="card w-text">
+            <div class="tp-title" id="wTitle"></div>
+            <div class="tp-blue" id="wBlue"></div>
+            <div class="tp-lines" id="wLines"></div>
+            <div class="tp-ask" id="wAsk"></div>
+          </div>
+
+          <div class="grid">
+            <div class="card w-band span2" id="wBand">
+              <div class="bg none"></div>
+              <div class="cap" id="wBandCap">純白 · unpacking2011 · 高清無損壁紙</div>
+            </div>
+            <div class="span2" id="gridSlotA"></div>
+          </div>
+
+          <div class="grid" id="iconsP1"></div>
+        </div>
+
+        <div class="page-col">
+          <div class="grid" id="iconsP2"></div>
+          <div class="card w-verify">
+            <div class="vt">HumanVerification</div>
+            <div class="vr"><span>Skip</span><span>|</span><span>Help</span><span>|</span><span>1777 a</span></div>
+            <div class="vc"></div>
+            <div class="ve">Enter the code</div>
+          </div>
+          <div class="note" style="margin:6px 2px">◈ 素材全部保存在本机浏览器。清理浏览数据前请到「設定 → 數據」导出备份。</div>
+        </div>
+      </div>
+    </div>
+    <div class="dots" id="dots"><i class="on"></i><i></i></div>
+    <div class="dock"><div class="grid" id="dockIcons" style="display:flex;flex:1;justify-content:space-around;gap:0"></div></div>
+  </div>
+
+  <!-- 信息 -->
+  <div class="pg" id="msgPage">
+    <div class="view root">
+      <div class="nav">
+        <button class="nb" data-home><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>桌面</button>
+        <div class="nt">信息</div>
+        <button class="nb r" data-sub="setChars">編輯</button>
+      </div>
+      <div class="scroll" id="msgContacts"></div>
+    </div>
+    <div class="view" id="msgChat">
+      <div class="nav">
+        <button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>信息</button>
+        <div class="nt" id="chatName"></div>
+        <button class="nb r" id="chatMenu"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="19" cy="12" r="1.4" fill="currentColor"/></svg></button>
+      </div>
+      <div class="flow" id="flow"></div>
+      <div class="bar">
+        <span class="kb" id="kaoBtn">(・ω・)</span>
+        <input class="cap-in" id="msgInput" placeholder="iMessage" autocomplete="off" enterkeyhint="send">
+        <button class="sd" id="sendBtn"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 相册 -->
+  <div class="pg" id="phPage">
+    <div class="view root">
+      <div class="metal">
+        <div class="mb" data-home><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>桌面</div>
+        <div class="mt">Camera Roll</div>
+        <div class="mb" id="phAddBtn"><svg viewBox="0 0 24 24"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2L8 5h8l1.5 2h2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.4"/></svg></div>
+      </div>
+      <div class="scroll">
+        <div class="ph-grid" id="phGrid"></div>
+        <div class="note" id="phNote"></div>
+      </div>
+    </div>
+    <div class="view" id="viewer">
+      <div class="metal">
+        <div class="mb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>Camera Roll</div>
+        <div class="mt" id="vwIdx">0 of 0</div>
+        <div class="mb" id="vwEdit"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 16l9.5-9.5a2 2 0 0 0-3-3L3 13v3h3z"/></svg></div>
+      </div>
+      <div class="vw-stage" id="vwStage">
+        <img id="vwImg" alt="">
+        <div class="vw-cap"><div class="c1" id="vwC1"></div><div class="c2" id="vwC2"></div></div>
+      </div>
+      <div class="vw-bar">
+        <div class="vb" id="vwShare"><svg viewBox="0 0 24 24"><path d="M12 3v11M8 7l4-4 4 4M5 14v6h14v-6"/></svg></div>
+        <div class="vb" id="vwPrev"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></div>
+        <div class="vb" id="vwWall"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M3 17l5-4 4 3 3-2 6 5"/></svg></div>
+        <div class="vb" id="vwNext"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="vb" id="vwDel"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 古早NET -->
+  <div class="pg" id="netPage">
+    <div class="win">
+      <div class="win-bar">
+        <i class="dt"></i><i class="dt"></i><i class="dt"></i>
+        <div class="wt">古早NET／用户正在登陆:-)</div>
+        <div class="mb" data-home style="height:20px;padding:0 7px;font-size:10px;color:#4b4f55;background:#e4e6e9;border:1px solid #b4b8bc;text-shadow:none;box-shadow:none">關閉</div>
+      </div>
+      <div class="win-tools">
+        <svg viewBox="0 0 24 24"><path d="M4 3l7 17 2.5-6.5L20 11z"/></svg>
+        <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="1.5"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M4 15c4-9 12-9 16 0"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M5 19V8l7-4 7 4v11"/></svg>
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L20 20"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M8 4v12a4 4 0 0 0 8 0V6"/></svg>
+      </div>
+      <div class="win-sub">
+        <span>▸ Administrator ◇ <b id="netNick" style="font-weight:500"></b></span>
+        <span class="ws">User Login</span>
+      </div>
+      <div class="win-body">
+        <div class="mini">
+          <div class="mh">
+            <div class="ma" id="netAv"></div>
+            <div><div class="mn" id="netNick2"></div><div class="ms" id="netSign"></div></div>
+          </div>
+          <div class="mbar"><i id="netBar"></i></div>
+          <div class="mg" id="netMiniGrid"></div>
+          <div class="ms" style="margin-top:auto;text-align:center">Top Widgets'</div>
+        </div>
+        <div class="gal"><div class="gal-grid" id="netGal"></div></div>
+      </div>
+      <div class="win-foot">
+        <span>*高清無損壁紙｜禁商／禁二次發布修改</span><span class="wz">100%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 設定 -->
+  <div class="pg" id="setPage">
+    <div class="view root">
+      <div class="nav"><button class="nb" data-home><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>桌面</button><div class="nt">設定</div><div style="min-width:54px"></div></div>
+      <div class="scroll">
+        <div class="grp">
+          <div class="cell" data-sub="setTheme"><span>主題與壁紙</span><span class="cv" id="cellTheme"></span></div>
+          <div class="cell" data-sub="setIcons"><span>圖標</span><span class="cw">›</span></div>
+        </div>
+        <div class="grp">
+          <div class="cell" data-sub="setApi"><span>接口與模型</span><span class="cv" id="cellApi">未配置</span></div>
+          <div class="cell" data-sub="setPreset"><span>預設（提示詞與參數）</span><span class="cv" id="cellPreset"></span></div>
+        </div>
+        <div class="grp">
+          <div class="cell" data-sub="setChars"><span>角色卡</span><span class="cv" id="cellChars"></span></div>
+          <div class="cell" data-sub="setBooks"><span>世界書</span><span class="cv" id="cellBooks"></span></div>
+          <div class="cell" data-sub="setPersona"><span>用戶人設</span><span class="cv" id="cellPersona"></span></div>
+        </div>
+        <div class="grp"><div class="cell" data-sub="setData"><span>數據備份與還原</span><span class="cw">›</span></div></div>
+        <div class="note" id="storeMode"></div>
+      </div>
+    </div>
+
+    <!-- 主题 -->
+    <div class="view" id="setTheme">
+      <div class="nav"><button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>設定</button><div class="nt">主題與壁紙</div><button class="nb r" id="btnThemeSave">保存</button></div>
+      <div class="scroll">
+        <div class="sub-t">壁紙</div>
+        <div class="grp">
+          <div class="cell" id="btnLockWall"><span>鎖屏壁紙</span><span class="cw">選擇 ›</span></div>
+          <div class="cell" id="btnHomeWall"><span>桌面壁紙</span><span class="cw">選擇 ›</span></div>
+          <div class="cell" id="btnBandWall"><span>橫幅組件圖</span><span class="cw">選擇 ›</span></div>
+        </div>
+        <div class="sub-t">畫面濾鏡</div>
+        <div class="grp">
+          <label class="fld"><span>灰度</span><input id="tGs" type="range" min="0" max="1" step=".05"><i class="rv" id="vGs"></i></label>
+          <label class="fld"><span>對比</span><input id="tCt" type="range" min=".8" max="1.6" step=".02"><i class="rv" id="vCt"></i></label>
+          <label class="fld"><span>亮度</span><input id="tBr" type="range" min=".8" max="1.4" step=".02"><i class="rv" id="vBr"></i></label>
+          <label class="fld"><span>網點</span><input id="tTex" type="range" min="0" max="1" step=".05"><i class="rv" id="vTex"></i></label>
+        </div>
+        <div class="sub-t">個人資料</div>
+        <div class="grp">
+          <div class="avrow"><div class="avp" id="tAvPrev">無</div><button class="bt" id="btnAvatar">選擇頭像</button></div>
+          <label class="fld"><span>暱稱</span><input id="tNick" autocomplete="off"></label>
+          <label class="fld"><span>簽名</span><input id="tSign" autocomplete="off"></label>
+          <label class="fld"><span>天使能量</span><input id="tEn" type="number" min="0" max="100"></label>
+        </div>
+        <div class="sub-t">狀態欄</div>
+        <div class="grp">
+          <label class="fld"><span>運營商</span><input id="tCarrier" autocomplete="off"></label>
+          <label class="fld"><span>電量 %</span><input id="tBat" type="number" min="1" max="100"></label>
+        </div>
+        <div class="sub-t">鎖屏文案</div>
+        <div class="grp">
+          <label class="fld"><span>標題</span><input id="tTitle" autocomplete="off"></label>
+          <label class="fld"><span>藍字</span><input id="tBlue" autocomplete="off"></label>
+          <label class="fld"><span>問句</span><input id="tAsk" autocomplete="off"></label>
+          <label class="fld"><span>日期後綴</span><input id="tSub" autocomplete="off"></label>
+          <label class="fld"><span>滑動文字</span><input id="tSlide" autocomplete="off"></label>
+        </div>
+        <label class="col"><span>正文（每行一句）</span><textarea id="tLines" rows="4"></textarea></label>
+        <label class="col"><span>選項文字（兩行：留下／離開）</span><textarea id="tOpts" rows="2"></textarea></label>
+        <div class="note">日期後綴用来放农历或任意小字（如 六月廿九）。滑动条与「滯在」都可解锁，「離れる」只会给你一句回应。</div>
+      </div>
+    </div>
+
+    <!-- 图标 -->
+    <div class="view" id="setIcons">
+      <div class="nav"><button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>設定</button><div class="nt">圖標</div><div style="min-width:54px"></div></div>
+      <div class="scroll"><div id="iconRows"></div>
+        <div class="note">點任意一行，从素材库挑一张灰度图作为该 APP 图标。图标名称也可以改。</div>
+      </div>
+    </div>
+
+    <!-- 接口 -->
+    <div class="view" id="setApi">
+      <div class="nav"><button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>設定</button><div class="nt">接口與模型</div><div style="min-width:54px"></div></div>
+      <div class="scroll">
+        <div class="grp">
+          <label class="fld"><span>接口格式</span><select id="apiProvider">
+            <option value="openai">OpenAI 兼容（含各类中转）</option>
+            <option value="claude">Claude Messages</option>
+            <option value="gemini">Google Gemini</option></select></label>
+          <label class="fld"><span>Base URL</span><input id="apiBase" placeholder="https://api.openai.com/v1" autocomplete="off"></label>
+          <label class="fld"><span>API Key</span><input id="apiKey" type="password" placeholder="sk-..." autocomplete="off"></label>
+          <label class="fld"><span>模型</span><input id="apiModel" placeholder="模型名" autocomplete="off"></label>
+          <label class="fld"><span>流式輸出</span><input id="apiStream" type="checkbox"></label>
+        </div>
+        <div class="btns"><button class="bt" id="btnModels">拉取模型列表</button><button class="bt hi" id="btnTest">測試連接</button></div>
+        <select id="modelList" size="8" class="mlist" hidden></select>
+        <div class="note" id="apiNote"></div>
+      </div>
+    </div>
+
+    <!-- 预设 -->
+    <div class="view" id="setPreset">
+      <div class="nav"><button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>設定</button><div class="nt">預設</div><button class="nb r" id="btnPresetSave">保存</button></div>
+      <div class="scroll">
+        <div class="grp">
+          <label class="fld"><span>temperature</span><input id="pTemp" type="number" step=".05" min="0" max="2"></label>
+          <label class="fld"><span>max_tokens</span><input id="pMax" type="number" step="50" min="16"></label>
+          <label class="fld"><span>top_p</span><input id="pTopP" type="number" step=".05" min="0" max="1"></label>
+          <label class="fld"><span>頻率懲罰</span><input id="pFreq" type="number" step=".1" min="-2" max="2"></label>
+          <label class="fld"><span>存在懲罰</span><input id="pPres" type="number" step=".1" min="-2" max="2"></label>
+          <label class="fld"><span>上下文預算</span><input id="pCtx" type="number" step="500" min="1000"></label>
+        </div>
+        <div class="sub-t">提示詞順序（勾选启用，↑↓ 调序）</div>
+        <div id="promptBlocks"></div>
+      </div>
+    </div>
+
+    <!-- 角色卡 -->
+    <div class="view" id="setChars">
+      <div class="nav"><button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>設定</button><div class="nt">角色卡</div><button class="nb r" id="btnCharNew">新建</button></div>
+      <div class="scroll">
+        <div class="btns"><button class="bt" id="btnCharImp">導入 PNG / JSON</button><input type="file" id="charImport" accept=".png,.json" multiple></div>
+        <div id="charList"></div>
+      </div>
+    </div>
+    <div class="view" id="setCharEdit">
+      <div class="nav"><button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>角色卡</button><div class="nt">編輯角色</div><button class="nb r" id="btnCharSave">保存</button></div>
+      <div class="scroll">
+        <div class="grp">
+          <div class="avrow"><div class="avp" id="cAvPrev">無</div><button class="bt" id="btnCAv">選擇頭像</button><input type="file" id="cAvFile" accept="image/*"></div>
+          <label class="fld"><span>名稱</span><input id="cName" autocomplete="off"></label>
+          <label class="fld"><span>簽名</span><input id="cSign" autocomplete="off"></label>
+        </div>
+        <label class="col"><span>人設描述 description</span><textarea id="cDesc" rows="8"></textarea></label>
+        <label class="col"><span>性格 personality</span><textarea id="cPers" rows="3"></textarea></label>
+        <label class="col"><span>場景 scenario</span><textarea id="cScen" rows="3"></textarea></label>
+        <label class="col"><span>開場白 first_mes</span><textarea id="cFirst" rows="4"></textarea></label>
+        <label class="col"><span>對話示例 mes_example</span><textarea id="cExam" rows="5"></textarea></label>
+        <label class="col"><span>角色專屬主提示詞</span><textarea id="cSys" rows="3"></textarea></label>
+        <label class="col"><span>角色專屬後置指令</span><textarea id="cPost" rows="3"></textarea></label>
+        <label class="fld"><span>綁定世界書</span><select id="cBooks" multiple size="4"></select></label>
+        <div class="btns"><button class="bt" id="btnCharExp">導出 JSON</button><button class="bt dg" id="btnCharDel">刪除角色</button></div>
+      </div>
+    </div>
+
+    <!-- 世界书 -->
+    <div class="view" id="setBooks">
+      <div class="nav"><button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>設定</button><div class="nt">世界書</div><button class="nb r" id="btnBookNew">新建</button></div>
+      <div class="scroll">
+        <div class="btns"><button class="bt" id="btnBookImp">導入 JSON</button><input type="file" id="bookImport" accept=".json" multiple></div>
+        <div id="bookList"></div>
+      </div>
+    </div>
+    <div class="view" id="setBookEdit">
+      <div class="nav"><button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>世界書</button><div class="nt">編輯世界書</div><button class="nb r" id="btnEntryNew">加條目</button></div>
+      <div class="scroll">
+        <div class="grp">
+          <label class="fld"><span>書名</span><input id="bName" autocomplete="off"></label>
+          <label class="fld"><span>掃描深度</span><input id="bScan" type="number" min="1" max="50"></label>
+          <label class="fld"><span>啟用</span><input id="bEnabled" type="checkbox"></label>
+        </div>
+        <div id="entryList"></div>
+        <div class="btns"><button class="bt hi" id="btnBookSave">保存</button><button class="bt" id="btnBookExp">導出</button><button class="bt dg" id="btnBookDel">刪除</button></div>
+      </div>
+    </div>
+    <div class="view" id="setEntryEdit">
+      <div class="nav"><button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>世界書</button><div class="nt">條目</div><button class="nb r" id="btnEntrySave">保存</button></div>
+      <div class="scroll">
+        <div class="grp">
+          <label class="fld"><span>備註名</span><input id="eComment" autocomplete="off"></label>
+          <label class="fld"><span>常駐（藍燈）</span><input id="eConst" type="checkbox"></label>
+          <label class="fld"><span>啟用</span><input id="eEnabled" type="checkbox"></label>
+        </div>
+        <label class="col"><span>主關鍵詞（逗号分隔）</span><input id="eKeys" autocomplete="off" style="height:30px;padding:0 8px;border:1px solid #d7dade;border-radius:5px;outline:none"></label>
+        <label class="col"><span>副關鍵詞（可空）</span><input id="eKeys2" autocomplete="off" style="height:30px;padding:0 8px;border:1px solid #d7dade;border-radius:5px;outline:none"></label>
+        <label class="col"><span>內容</span><textarea id="eContent" rows="8"></textarea></label>
+        <div class="grp">
+          <label class="fld"><span>插入位置</span><select id="ePos">
+            <option value="before_char">角色描述前</option><option value="after_char">角色描述後</option>
+            <option value="at_depth">按深度插入</option></select></label>
+          <label class="fld"><span>深度</span><input id="eDepth" type="number" min="0" max="50"></label>
+          <label class="fld"><span>order</span><input id="eOrder" type="number"></label>
+          <label class="fld"><span>概率 %</span><input id="eProb" type="number" min="0" max="100"></label>
+          <label class="fld"><span>區分大小寫</span><input id="eCase" type="checkbox"></label>
+        </div>
+        <div class="btns"><button class="bt dg" id="btnEntryDel">刪除條目</button></div>
+      </div>
+    </div>
+
+    <!-- 人设 -->
+    <div class="view" id="setPersona">
+      <div class="nav"><button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>設定</button><div class="nt">用戶人設</div><button class="nb r" id="btnPersonaSave">保存</button></div>
+      <div class="scroll">
+        <div class="grp"><label class="fld"><span>你的名字</span><input id="uName" autocomplete="off"></label></div>
+        <label class="col"><span>你的人設描述</span><textarea id="uDesc" rows="8"></textarea></label>
+        <div class="note">此处内容以 {{user}} 注入提示词，角色卡里的 {{user}} 也会替换成这个名字。</div>
+      </div>
+    </div>
+
+    <!-- 数据 -->
+    <div class="view" id="setData">
+      <div class="nav"><button class="nb" data-back><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>設定</button><div class="nt">數據</div><div style="min-width:54px"></div></div>
+      <div class="scroll">
+        <div class="btns"><button class="bt" id="btnExp">導出設定（不含圖片）</button><button class="bt" id="btnImpBtn">導入設定</button><input type="file" id="impAll" accept=".json"></div>
+        <div class="note" id="dataStat"></div>
+        <div class="btns"><button class="bt dg" id="btnWipe">清空全部數據</button></div>
+        <div class="note">导出文件包含你填写的 API Key，请勿分享。图片素材体积大，不进导出文件，需单独保留原图。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 锁屏 -->
+  <div id="lock">
+    <div class="wall empty" id="lockWall"></div>
+    <div class="lk-clock">
+      <div class="lk-date" id="lkDate"></div>
+      <div class="lk-time" id="lkTime">00:00</div>
+    </div>
+    <div class="lk-panel">
+      <div class="lk-pct">%</div>
+      <div class="tp-title" id="lkTitle"></div>
+      <div class="tp-blue" id="lkBlue"></div>
+      <div class="tp-lines" id="lkLines"></div>
+      <div class="tp-ask" id="lkAsk"></div>
+      <div class="tp-opts">
+        <div class="tp-opt" id="optStay"><i class="rd"></i><span id="optStayT"></span></div>
+        <div class="tp-opt" id="optLeave"><i class="rd"></i><span id="optLeaveT"></span></div>
+      </div>
+      <div class="tp-foot" id="lkFoot">☾ 天使が選んだ</div>
+    </div>
+    <div class="slide" id="slide">
+      <div class="slide-knob" id="knob"><svg viewBox="0 0 24 24"><path d="M4 12h14M12 6l6 6-6 6"/></svg></div>
+      <div class="slide-txt" id="slideTxt">slide to stay</div>
+    </div>
+  </div>
+
+  <!-- 素材选择器 -->
+  <div class="picker" id="picker">
+    <div class="nav">
+      <button class="nb" id="pkClose">取消</button>
+      <div class="nt" id="pkTitle">選擇素材</div>
+      <button class="nb r" id="pkUp">上傳</button>
+      <input type="file" id="pkFile" accept="image/*" multiple>
+    </div>
+    <div class="scroll"><div class="ph-grid" id="pkGrid"></div><div class="note" id="pkNote"></div></div>
+  </div>
+
+  <div class="texture" id="texture"></div>
+  <div class="sheet" id="sheet"><div class="sbox" id="sheetBox"></div></div>
+  <div class="toast" id="toast"></div>
+</div>
+
+<!-- 外部模块加载 -->
+<script src="js/core.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
